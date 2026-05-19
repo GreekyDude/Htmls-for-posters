@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ημέρα Μνήμης Γενοκτονίας Ποντίων</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Cinzel', serif;
+  }
+
+  .poster {
+    width: 700px;
+    min-height: 980px;
+    background: #080C14;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 60px;
+  }
+
+  .poster::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 35%, rgba(160, 100, 20, 0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 100%, rgba(20, 40, 80, 0.4) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .outer-border {
+    position: absolute;
+    inset: 18px;
+    border: 0.5px solid rgba(180, 150, 80, 0.25);
+    pointer-events: none;
+  }
+
+  .inner-border {
+    position: absolute;
+    inset: 26px;
+    border: 0.5px solid rgba(180, 150, 80, 0.12);
+    pointer-events: none;
+  }
+
+  .corner {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-color: rgba(180, 150, 80, 0.5);
+    border-style: solid;
+  }
+  .corner-tl { top: 18px; left: 18px; border-width: 1px 0 0 1px; }
+  .corner-tr { top: 18px; right: 18px; border-width: 1px 1px 0 0; }
+  .corner-bl { bottom: 18px; left: 18px; border-width: 0 0 1px 1px; }
+  .corner-br { bottom: 18px; right: 18px; border-width: 0 1px 1px 0; }
+
+  .header-text {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: rgba(180, 160, 110, 0.5);
+    text-align: center;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  .divider-line {
+    width: 100%;
+    height: 0.5px;
+    background: linear-gradient(to right, transparent, rgba(180, 150, 80, 0.3), transparent);
+    margin: 16px 0;
+  }
+
+  .divider-line.short {
+    width: 200px;
+  }
+
+  .flame-container {
+    position: relative;
+    width: 100px;
+    height: 140px;
+    margin: 8px 0 16px;
+  }
+
+  .flame {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .flame svg {
+    animation: flicker 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes flicker {
+    0% { transform: scaleX(1) scaleY(1); }
+    25% { transform: scaleX(0.97) scaleY(1.02); }
+    50% { transform: scaleX(1.02) scaleY(0.98); }
+    75% { transform: scaleX(0.98) scaleY(1.01); }
+    100% { transform: scaleX(1.01) scaleY(1.02); }
+  }
+
+  .flame-glow {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 20px;
+    background: radial-gradient(ellipse, rgba(200, 120, 20, 0.3), transparent);
+    border-radius: 50%;
+  }
+
+  .date-block {
+    text-align: center;
+    margin: 8px 0;
+  }
+
+  .date-main {
+    font-family: 'Cinzel', serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: #D4B870;
+    letter-spacing: 4px;
+    line-height: 1;
+  }
+
+  .date-sub {
+    font-family: 'Crimson Text', serif;
+    font-size: 13px;
+    letter-spacing: 6px;
+    color: rgba(180, 150, 80, 0.5);
+    margin-top: 6px;
+    text-transform: uppercase;
+  }
+
+  .title-block {
+    text-align: center;
+    margin: 20px 0 16px;
+  }
+
+  .title-greek {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #C8B080;
+    letter-spacing: 2px;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .title-english {
+    font-family: 'Crimson Text', serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: rgba(160, 140, 100, 0.6);
+    margin-top: 10px;
+    text-transform: uppercase;
+  }
+
+  .years-block {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 6px;
+    color: rgba(180, 150, 80, 0.45);
+    text-align: center;
+    margin: 8px 0;
+  }
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  .ornament-line {
+    flex: 1;
+    height: 0.5px;
+    background: linear-gradient(to right, transparent, rgba(180, 150, 80, 0.3));
+  }
+
+  .ornament-line.reverse {
+    background: linear-gradient(to left, transparent, rgba(180, 150, 80, 0.3));
+  }
+
+  .ornament-diamond {
+    width: 5px;
+    height: 5px;
+    background: rgba(180, 150, 80, 0.5);
+    transform: rotate(45deg);
+  }
+
+  .quote-block {
+    text-align: center;
+    margin: 16px 0;
+    padding: 0 20px;
+  }
+
+  .quote-greek {
+    font-family: 'Crimson Text', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: #A89060;
+    line-height: 1.7;
+    letter-spacing: 0.3px;
+  }
+
+  .quote-english {
+    font-family: 'Crimson Text', serif;
+    font-size: 12px;
+    font-style: italic;
+    color: rgba(140, 120, 80, 0.6);
+    line-height: 1.7;
+    margin-top: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .victims-block {
+    text-align: center;
+    margin: 14px 0;
+    padding: 16px 30px;
+    border: 0.5px solid rgba(180, 150, 80, 0.15);
+    width: 100%;
+  }
+
+  .victims-number {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: rgba(180, 150, 80, 0.7);
+    letter-spacing: 3px;
+  }
+
+  .victims-label-gr {
+    font-family: 'Crimson Text', serif;
+    font-size: 12px;
+    color: rgba(160, 140, 100, 0.5);
+    letter-spacing: 2px;
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+
+  .victims-label-en {
+    font-family: 'Crimson Text', serif;
+    font-size: 10px;
+    color: rgba(140, 120, 80, 0.35);
+    letter-spacing: 2px;
+    margin-top: 2px;
+    text-transform: uppercase;
+  }
+
+  .memory-text {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .memory-gr {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: rgba(180, 150, 80, 0.4);
+    text-transform: uppercase;
+  }
+
+  .memory-en {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: rgba(140, 120, 80, 0.3);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .footer {
+    margin-top: auto;
+    padding-top: 20px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .footer-text {
+    font-family: 'Cinzel', serif;
+    font-size: 7.5px;
+    letter-spacing: 2.5px;
+    color: rgba(140, 120, 80, 0.3);
+    text-transform: uppercase;
+  }
+
+  .stars {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 8px 0;
+  }
+
+  .star {
+    width: 3px;
+    height: 3px;
+    background: rgba(180, 150, 80, 0.35);
+    border-radius: 50%;
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="outer-border"></div>
+  <div class="inner-border"></div>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <p class="header-text">Ελληνική Δημοκρατία</p>
+  <p class="header-text" style="letter-spacing: 3px; font-size: 8px; color: rgba(140,120,80,0.35);">Hellenic Republic</p>
+
+  <div class="divider-line"></div>
+
+  <div class="flame-container">
+    <div class="flame">
+      <svg width="80" height="120" viewBox="0 0 80 120">
+        <path d="M40 5 C32 22 18 35 15 55 C10 80 22 95 28 82 C24 100 18 112 25 118 C28 120 40 122 40 122 C40 122 52 120 55 118 C62 112 56 100 52 82 C58 95 70 80 65 55 C62 35 48 22 40 5Z" fill="#B8720A" opacity="0.9"/>
+        <path d="M40 18 C34 33 23 44 21 60 C17 80 27 93 32 83 C29 98 24 108 30 113 C33 116 40 117 40 117 C40 117 47 116 50 113 C56 108 51 98 48 83 C53 93 63 80 59 60 C57 44 46 33 40 18Z" fill="#D08820" opacity="0.88"/>
+        <path d="M40 32 C36 44 28 52 26 64 C23 79 31 89 35 82 C33 93 29 101 33 106 C36 109 40 110 40 110 C40 110 44 109 47 106 C51 101 47 93 45 82 C49 89 57 79 54 64 C52 52 44 44 40 32Z" fill="#EEA830" opacity="0.85"/>
+        <path d="M40 50 C37 58 33 63 32 72 C30 82 36 88 38 84 C37 91 35 96 37 100 C38 102 40 103 40 103 C40 103 42 102 43 100 C45 96 43 91 42 84 C44 88 50 82 48 72 C47 63 43 58 40 50Z" fill="#F8CC50" opacity="0.8"/>
+      </svg>
+    </div>
+    <div class="flame-glow"></div>
+  </div>
+
+  <div class="date-block">
+    <div class="date-main">19 ΜΑΪΟΥ</div>
+    <div class="date-sub">19th of May</div>
+  </div>
+
+  <div class="divider-line short"></div>
+
+  <div class="title-block">
+    <div class="title-greek">Ημέρα Μνήμης</div>
+    <div class="title-greek">Γενοκτονίας των Ποντίων</div>
+    <div class="title-english">Day of Remembrance of the Pontic Greek Genocide</div>
+  </div>
+
+  <div class="ornament">
+    <div class="ornament-line"></div>
+    <div class="ornament-diamond"></div>
+    <div class="ornament-line reverse"></div>
+  </div>
+
+  <div class="years-block">1914 — 1923</div>
+
+  <div class="ornament">
+    <div class="ornament-line"></div>
+    <div class="ornament-diamond"></div>
+    <div class="ornament-line reverse"></div>
+  </div>
+
+  <div class="victims-block">
+    <div class="victims-number">360.000+</div>
+    <div class="victims-label-gr">Ψυχές που χάθηκαν</div>
+    <div class="victims-label-en">Lives lost</div>
+  </div>
+
+  <div class="divider-line"></div>
+
+  <div class="quote-block">
+    <div class="quote-greek">«Δεν ξεχνάμε. Δεν συγχωρούμε. Δεν αρνούμαστε.»</div>
+    <div class="quote-english">"We do not forget. We do not forgive. We do not deny."</div>
+  </div>
+
+  <div class="stars">
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+  </div>
+
+  <div class="memory-text">
+    <div class="memory-gr">Εις αιώνιαν μνήμην</div>
+    <div class="memory-en">In Eternal Memory</div>
+  </div>
+
+  <div class="footer">
+    <div class="divider-line"></div>
+    <p class="footer-text">Γραφείο Πρωθυπουργού — Office of the Prime Minister — Hellenic Republic</p>
+  </div>
+</div>
+</body>
+</html>
